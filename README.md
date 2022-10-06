@@ -1,4 +1,7 @@
-NOTE: To ACESS LIST OF USER GO TO UR path /list
+NOTE: 
+
+ - TO SEE USER DATA GO TO URL /list
+ - TO SEE ASSIGMENT TEST 1 GO TO URL / (open console)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

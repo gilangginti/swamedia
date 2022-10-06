@@ -1,8 +1,46 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useCallback, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import styles from '../styles/Home.module.css'
+import { getRequest } from '../utils/Network'
 
 export default function Home() {
+  let [numArray, setArray] = useState([20, 4, 17, 25, 6,45,1]) 
+  let [number] = useState(17)
+  
+  function LoopNumber(){
+    let arr2= []
+    for(var i = 1; i <= number; i = i+2){
+      arr2.push(i)
+    }
+    console.log('Bilangan Ganjil',arr2)
+  }
+
+  function Sorting(){
+    numArray.sort(function(a, b) {
+      return a - b;
+    });
+
+    setArray(numArray);
+    console.log('Number Sorting',numArray)
+  }
+
+  const checkPalindrom = useCallback((str) => {
+    if(str === str.split('').reverse().join('')){
+      toast.success(`${str} Merupakan kata palindrome`)
+    } else {
+      toast.error(`${str} Bukan merupakan kata palindrome`)
+    }
+  },[])
+  
+  useEffect(()=>{
+    LoopNumber()
+    Sorting()
+  },[])
+  useEffect(()=>{
+    checkPalindrom('sarasa')
+  },[checkPalindrom])
   return (
     <div className={styles.container}>
       <Head>
@@ -20,7 +58,13 @@ export default function Home() {
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
-
+        {/* {numArray.map((item,index)=>{
+          return(
+            <ul key={index}>
+              <li>{item}</li>
+            </ul>
+          )
+        })} */}
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
